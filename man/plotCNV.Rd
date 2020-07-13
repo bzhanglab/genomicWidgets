@@ -24,6 +24,6 @@ plotCNV is used to plot the segment-level SCNA data into heatmap
 }
 \examples{
 hnsccSegfile <- system.file("extdata", "CPTAC3_HNSCC_SCNA_segment_level.tsv", package = "genomicWidgets")
-hnsccSegDf <- read.table(hnsccSegfile)
+hnsccSegDf <- read.table(hnsccSegfile, header = TRUE)
 plotCNV(hnsccSegDf, geneVersion = 'hg38')
 }

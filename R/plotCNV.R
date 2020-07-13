@@ -118,7 +118,7 @@ plotCNV = function(segDf, geneVersion = NULL, sampleOrder = NULL, chrOrder = NUL
     .fillwithNA(segDf, totalChrRangeObj)
   else{
     segList = split(segDf, f = segDf$sample)
-    segList = lapply(segList, function(x)fillwithNA(segDf = x, totalChrRangeObj = totalChrRangeObj))
+    segList = lapply(segList, function(x).fillwithNA(segDf = x, totalChrRangeObj = totalChrRangeObj))
     newSegDf = do.call(rbind, segList)
     newSegDf$sample = rep(names(segList), sapply(segList, nrow))
     newSegDf
