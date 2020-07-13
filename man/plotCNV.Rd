@@ -6,7 +6,7 @@
 \usage{
 plotCNV(
   segDf,
-  genomeVersion = NULL,
+  genomeVersion = "hg38",
   samples = NULL,
   chr = NULL,
   start = NULL,
@@ -16,7 +16,7 @@ plotCNV(
 \arguments{
 \item{segDf}{segment-level SCNA data frame. This is usually the same input as GISTIC2. Make sure there are these columns "sample", "chromosome", "start", "end", "log2".}
 
-\item{genomeVersion}{optionally specify the genome version of SCNA data were generated, should be either 'hg19' or 'hg38'. If this option is specified, the function will fill any gaps between the data and the whole genome.
+\item{genomeVersion}{specify the genome version of SCNA data were generated, should be either 'hg19' or 'hg38'.
 If genomeVersion is NULL, the no gap will be filled. Default is NULL.}
 
 \item{samples}{a optional character vector to specify the samples for the plot.

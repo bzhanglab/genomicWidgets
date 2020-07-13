@@ -2,7 +2,7 @@
 #'
 #' plotCNV is used to plot the segment-level SCNA data into heatmap
 #' @param segDf segment-level SCNA data frame. This is usually the same input as GISTIC2. Make sure there are these columns "sample", "chromosome", "start", "end", "log2".
-#' @param genomeVersion optionally specify the genome version of SCNA data were generated, should be either 'hg19' or 'hg38'. If this option is specified, the function will fill any gaps between the data and the whole genome. 
+#' @param genomeVersion specify the genome version of SCNA data were generated, should be either 'hg19' or 'hg38'.
 #' If genomeVersion is NULL, the no gap will be filled. Default is NULL.
 #' @param samples a optional character vector to specify the samples for the plot.
 #' If NULL, all the samples will be ploted and ranked as their order in the segDf. Default is NULL. 
@@ -21,7 +21,7 @@
 #' plotCNV(hnsccSegDf, genomeVersion = 'hg38', samples = c("C3L-00977","C3L-00987","C3L-00994","C3L-00995"), chr=c('1','2','X'), end=c(1000000,2000000,10000000)) #plot SCNA heatmap for selected samples and genomic ranges
 #' @export
 plotCNV = function(segDf, 
-                   genomeVersion = NULL, 
+                   genomeVersion = 'hg38', 
                    samples = NULL, 
                    chr = NULL,
                    start = NULL,
@@ -48,15 +48,13 @@ plotCNV = function(segDf,
   }
   
   #fill the gap as NAs, as required
-  if(!is.null(genomeVersion)){
-    if(genomeVersion=='hg38')
-      chrLengthObj = .seg2Ranges(hg38ChrLengthDf)
-    else if(genomeVersion=='hg19')
-      chrLengthObj = .seg2Ranges(hg19ChrLengthDf)
-    else
-      stop("Current only support genome version hg19 and hg38")
-    segDf = .fillwithNA.2(segDf = segDf, totalChrRangeObj = chrLengthObj)
-  }
+  if(genomeVersion=='hg38')
+    chrLengthObj = .seg2Ranges(hg38ChrLengthDf)
+  else if(genomeVersion=='hg19')
+    chrLengthObj = .seg2Ranges(hg19ChrLengthDf)
+  else
+    stop("Current only support genome version hg19 and hg38")
+  segDf = .fillwithNA.2(segDf = segDf, totalChrRangeObj = chrLengthObj)
   
   #select chromosomes and range if necessary
   if(!is.null(chr) | !is.null(start) | !is.null(end))
