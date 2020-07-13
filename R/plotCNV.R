@@ -20,6 +20,13 @@ plotCNV = function(segDf, geneVersion = NULL, sampleOrder = NULL, chrOrder = NUL
          \t\"sample\",\"chromosome\",\"start\",\"end\",\"log2\"")
   }
   
+  #harmonize the chromosome to be the style of "Y"
+  segDf$chromosome = as.character(segDf$chromosome)
+  if(grepl(pattern = "(chr)|(Chr)",segDf$chromosome[1]))
+    segDf$chromosome = substr(segDf$chromosome, 4, nchar(segDf$chromosome))
+  segDf$chromosome[segDf$chromosome == "23"] = "X"
+  segDf$chromosome[segDf$chromosome == "24"] = "Y"
+  
   #fill the gap as NAs, as required
   if(!is.null(geneVersion)){
     if(geneVersion=='hg38')
@@ -78,14 +85,6 @@ plotCNV = function(segDf, geneVersion = NULL, sampleOrder = NULL, chrOrder = NUL
 #' @return a data frame with gap-filled segment-level SCNA data
 #'
 .fillwithNA = function(segDf, totalChrRangeObj){
-
-  segDf$chromosome = as.character(segDf$chromosome)
-  #harmonize the chromosome to be the style of "Y"
-  if(grepl(pattern = "chr",segDf$chromosome[1]))
-    segDf$chromosome = substr(segDf$chromosome, 4, nchar(segDf$chromosome))
-  segDf$chromosome[segDf$chromosome == "23"] = "X"
-  segDf$chromosome[segDf$chromosome == "24"] = "Y"
-  
   segObj = GRanges(seqnames = segDf$chromosome, 
                    ranges = IRanges(start = segDf$start, end = segDf$end),
                    strand = Rle(strand("*"), nrow(segDf)),
@@ -140,4 +139,6 @@ plotCNV = function(segDf, geneVersion = NULL, sampleOrder = NULL, chrOrder = NUL
                      strand = Rle(strand("*"), nrow(totalChrLengthDf)))
   rangeObj
 }
+
+
 
