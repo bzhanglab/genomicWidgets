@@ -9,7 +9,7 @@
 #' @return a ggplot2 plot object
 #' @examples 
 #' hnsccSegfile <- system.file("extdata", "CPTAC3_HNSCC_SCNA_segment_level.tsv", package = "genomicWidgets")
-#' hnsccSegDf <- read.table(hnsccSegfile)
+#' hnsccSegDf <- read.table(hnsccSegfile, header = TRUE)
 #' plotCNV(hnsccSegDf, geneVersion = 'hg38')
 #' @export
 plotCNV = function(segDf, geneVersion = NULL, sampleOrder = NULL, chrOrder = NULL){
@@ -115,7 +115,7 @@ plotCNV = function(segDf, geneVersion = NULL, sampleOrder = NULL, chrOrder = NUL
 .fillwithNA.2 = function(segDf, totalChrRangeObj){
   #this version works for multiple samples
   if(length(unique(segDf$sample)) == 1)
-    fillwithNA(segDf, totalChrRangeObj)
+    .fillwithNA(segDf, totalChrRangeObj)
   else{
     segList = split(segDf, f = segDf$sample)
     segList = lapply(segList, function(x)fillwithNA(segDf = x, totalChrRangeObj = totalChrRangeObj))
