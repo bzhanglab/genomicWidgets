@@ -1,0 +1,16 @@
+Package: genomicWidgets
+Type: Package
+Title: Useful SCNA and DNA methylation analysis tools
+Version: 1.0
+Authors@R: 
+  person(given = "Chen",
+    family = "Huang",
+    role = c("aut", "cre"),
+    email = "ibphuangchen@gmail.com")
+RoxygenNote: 7.1.1
+Roxygen: list(markdown = TRUE)
+Encoding: UTF-8
+LazyData: true
+Imports: ggplot2, scales, GenomicRanges
+Depends: 
+    R (>= 2.10)
