@@ -4,17 +4,32 @@
 \alias{plotCNV}
 \title{plot SCNA landscape as heatmap}
 \usage{
-plotCNV(segDf, geneVersion = NULL, sampleOrder = NULL, chrOrder = NULL)
+plotCNV(
+  segDf,
+  genomeVersion = NULL,
+  samples = NULL,
+  chr = NULL,
+  start = NULL,
+  end = NULL
+)
 }
 \arguments{
 \item{segDf}{segment-level SCNA data frame. This is usually the same input as GISTIC2. Make sure there are these columns "sample", "chromosome", "start", "end", "log2".}
 
-\item{geneVersion}{optionally specify the genome version of SCNA data were generated, should be either 'hg19' or 'hg38'. If this option is specified, the function will fill any gaps between the data and the whole genome.
-If geneVersion is NULL, the no gap will be filled. Default is NULL.}
+\item{genomeVersion}{optionally specify the genome version of SCNA data were generated, should be either 'hg19' or 'hg38'. If this option is specified, the function will fill any gaps between the data and the whole genome.
+If genomeVersion is NULL, the no gap will be filled. Default is NULL.}
 
-\item{sampleOrder}{a optional character vector to specify the sample order for the display. If NULL, the samples will be ranked as their order in the segDf. Default is NULL.}
+\item{samples}{a optional character vector to specify the samples for the plot.
+If NULL, all the samples will be ploted and ranked as their order in the segDf. Default is NULL.}
 
-\item{chrOrder}{a optional character vector to specify the chromosome order for the display. If NULL, the chromosomes will be ranked as their order in the segDf. Default is NULL.}
+\item{chr}{a optional character vector to specify the chromosomes for the plot.
+If NULL, the chromosomes in the segDf will be all ploted and ranked as their order in the segDf. Default is NULL.}
+
+\item{start}{a integer vector specifying the start positions of each chromosome.
+If NULL, the position will be the begining of the chromosome(s). Default is NULL.}
+
+\item{end}{a integer vector specifying the end positions of each chromosome.
+If NULL, the position will be the end of the chromosome(s). Default is NULL.}
 }
 \value{
 a ggplot2 plot object
@@ -25,5 +40,7 @@ plotCNV is used to plot the segment-level SCNA data into heatmap
 \examples{
 hnsccSegfile <- system.file("extdata", "CPTAC3_HNSCC_SCNA_segment_level.tsv", package = "genomicWidgets")
 hnsccSegDf <- read.table(hnsccSegfile, header = TRUE)
-plotCNV(hnsccSegDf, geneVersion = 'hg38')
+plotCNV(hnsccSegDf, genomeVersion = 'hg38') #plot the whole CNV landscape for the cohort
+plotCNV(hnsccSegDf, genomeVersion = 'hg38', samples = c("C3L-00995","C3L-00977","C3L-00987","C3L-00994")) #plot SCNA heatmap for selected samples 
+plotCNV(hnsccSegDf, genomeVersion = 'hg38', samples = c("C3L-00977","C3L-00987","C3L-00994","C3L-00995"), chr=c('1','2','X'), end=c(1000000,2000000,10000000)) #plot SCNA heatmap for selected samples and genomic ranges
 }

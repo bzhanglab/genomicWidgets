@@ -7,7 +7,7 @@
 .fillwithNA(segDf, totalChrRangeObj)
 }
 \arguments{
-\item{segDf}{segment-level SCNA data frame. This is usually the same input as GISTIC2. Make sure there are these columns "sample", "chromosome", "start", "end", "log2".}
+\item{segDf}{segment-level SCNA data frame containing only one sample. This is usually the same input as GISTIC2. Make sure there are these columns "sample", "chromosome", "start", "end", "log2".}
 
 \item{totalChrRangeObj}{a GenomicRanges object, specifying the lengths of all chromosomes}
 }
