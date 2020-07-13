@@ -12,5 +12,4 @@ Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 LazyData: true
 Imports: ggplot2, scales, GenomicRanges
-Depends: 
-    R (>= 2.10)
+Depends: R (>= 2.10), ggplot2, scales, GenomicRanges

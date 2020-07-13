@@ -90,7 +90,7 @@ plotCNV = function(segDf, geneVersion = NULL, sampleOrder = NULL, chrOrder = NUL
                    strand = Rle(strand("*"), nrow(segDf)),
                    log2 = segDf$log2)
   ##the segmenets not covered by the segObj
-  naRanges = setdiff(totalChrRangeObj, segObj)
+  naRanges = GenomicRanges::setdiff(totalChrRangeObj, segObj)
   if(length(naRanges)!=0){
     naRanges$log2 = NA
     #combining naRanges to segObj
