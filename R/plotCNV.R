@@ -15,8 +15,8 @@
 plotCNV = function(segDf, geneVersion = NULL, sampleOrder = NULL, chrOrder = NULL){
   require(ggplot2, quietly = TRUE)
   require(scales, quietly = TRUE)
-  if(!all(c("sample","chromosome","start","end","log2") %in% colnames(segFile))){
-    stop("Error: the segFiles should contain 5 columns:\n
+  if(!all(c("sample","chromosome","start","end","log2") %in% colnames(segDf))){
+    stop("Error: the input segDf should contain 5 columns:\n
          \t\"sample\",\"chromosome\",\"start\",\"end\",\"log2\"")
   }
   
@@ -28,7 +28,7 @@ plotCNV = function(segDf, geneVersion = NULL, sampleOrder = NULL, chrOrder = NUL
       chrLengthObj = .seg2Ranges(hg19ChrLengthDf)
     else
       stop("Current only support genome version hg19 and hg38")
-    segDf = .fillwithNA.2(segDf = segFile, totalChrRangeObj = chrLengthObj)
+    segDf = .fillwithNA.2(segDf = segDf, totalChrRangeObj = chrLengthObj)
   }
   
   if(!is.factor(segDf$sample)){
