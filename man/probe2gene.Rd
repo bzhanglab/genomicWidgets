@@ -23,6 +23,7 @@ This function extracts the methylation probes located in the promoter region and
 gene-level methylation by mean or median
 }
 \examples{
-hnsccMethy=read.table(file = './inst/extdata/hnscc_GDC_methylation_part.tsv', sep = '\t', row.names = 1, header = TRUE)
+hnsccSegfile <- system.file("extdata", "hnscc_GDC_methylation_part.tsv", package = "genomicWidgets")
+hnsccMethy <- read.table(file = hnsccSegfile, sep = '\t', row.names = 1, header = TRUE)
 probe2gene(probeMat=hnsccMethy)
 }

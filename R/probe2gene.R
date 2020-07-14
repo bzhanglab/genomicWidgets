@@ -10,12 +10,13 @@
 #' @return the gene-level DNA methylation matrix (gene by sample), entries are beta values
 #' @export
 #'
-#' @examples hnsccMethy=read.table(file = './inst/extdata/hnscc_GDC_methylation_part.tsv', sep = '\t', row.names = 1, header = TRUE)
+#' @examples hnsccSegfile <- system.file("extdata", "hnscc_GDC_methylation_part.tsv", package = "genomicWidgets")
+#' hnsccMethy <- read.table(file = hnsccSegfile, sep = '\t', row.names = 1, header = TRUE)
 #' probe2gene(probeMat=hnsccMethy)
 probe2gene = function(probeMat, nThread = NULL, use='median', ...){
   if(is.null(nThread))
     nThread = detectCores() - 1
-  cl = makeCluster(no_cores, ...)
+  cl = makeCluster(nThread, ...)
   clusterExport(cl, "probeMat")
   if(use=='median')
     genelevel = parLapply(epicProbe2GeneMappingClean, function(x)apply(probeMat[x,],2,median,na.rm=T))
