@@ -2,25 +2,25 @@
 % Please edit documentation in R/probe2gene.R
 \name{probe2gene}
 \alias{probe2gene}
-\title{convert the EPIC methylation array probe-level DNA methylation to gene-level}
+\title{Convert the EPIC methylation array probe-level DNA methylation to gene-level}
 \usage{
 probe2gene(probeMat, nThread = NULL, use = "median", ...)
 }
 \arguments{
-\item{probeMat}{the probe-level DNA methylation matrix (probe by sample), entries are beta values}
+\item{probeMat}{the probe-level DNA methylation matrix (probe by sample), entries are beta values.}
 
-\item{nThread}{the number of threads to be used for the calcluation. If NULL, the number will be equal to the (# of CPU threads)-1. Default is NULL}
+\item{nThread}{the number of threads to be used for the calcluation. If NULL, the number will be equal to the (# of CPU threads)-1. Default is NULL.}
 
 \item{use}{specify how the multiple probe values be converted to the single gene-level value. Need to be either 'mean' or 'median'.}
 
-\item{...}{addtional parameter to for makeCluster. If you used a Linux or MacOS, it is proper to add type='FORK'}
+\item{...}{addtional parameter to for makeCluster. If you used a Linux or MacOS, it is proper to add type='FORK'.}
 }
 \value{
-the gene-level DNA methylation matrix (gene by sample), entries are beta values
+the gene-level DNA methylation matrix (gene by sample), entries are beta values.
 }
 \description{
 This function extracts the methylation probes located in the promoter region and CpG islands for each gene and use their methylation levels to summerize the
-gene-level methylation by mean or median
+gene-level methylation by mean or median.
 }
 \examples{
 hnsccSegfile <- system.file("extdata", "hnscc_GDC_methylation_part.tsv", package = "genomicWidgets")

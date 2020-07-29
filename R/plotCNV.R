@@ -1,8 +1,8 @@
-#' plot SCNA landscape as heatmap
+#' Plot SCNA landscape as heatmap
 #'
-#' plotCNV is used to plot the segment-level SCNA data into heatmap
-#' @param segDf segment-level SCNA data frame. This is usually the same input as GISTIC2. Make sure there are these columns "sample", "chromosome", "start", "end", "log2".
-#' @param genomeVersion specify the genome version of SCNA data were generated, should be either 'hg19' or 'hg38'.
+#' plotCNV is used to plot the segment-level SCNA data into heatmap.
+#' @param segDf segment-level SCNA data frame. This is usually the same input as GISTIC2. Make sure that there are these columns "sample", "chromosome", "start", "end", "log2".
+#' @param genomeVersion specify the genome version by which SCNA data were generated, should be either 'hg19' or 'hg38'.
 #' If genomeVersion is NULL, the no gap will be filled. Default is NULL.
 #' @param samples a optional character vector to specify the samples for the plot.
 #' If NULL, all the samples will be ploted and ranked as their order in the segDf. Default is NULL. 

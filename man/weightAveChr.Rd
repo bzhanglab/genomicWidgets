@@ -7,20 +7,20 @@
 weightAveChr(segDf, genomeVersion = "hg38", option = "abs", chrDf = NULL)
 }
 \arguments{
-\item{segDf}{segment-level SCNA data frame. This is usually the same input as GISTIC2. Make sure there are these columns "sample", "chromosome", "start", "end", "log2".}
+\item{segDf}{segment-level SCNA data frame. This is usually the same input as GISTIC2. Make sure that there are these columns: "sample", "chromosome", "start", "end", "log2".}
 
-\item{genomeVersion}{the genome version of SCNA data were generated, should be either 'hg19' or 'hg38'. Default is 'hg38'.}
+\item{genomeVersion}{the genome version by which SCNA data were generated, should be either 'hg19' or 'hg38'. Default is 'hg38'.}
 
 \item{option}{choose how to calculate chromosome instability, should be one of 'abs', 'amp', 'del' or 'origin'.
 If 'abs' (default), both CN deletions and amplifications will contribute to the instability score.
 If 'amp', only CN amplifications will be considered. If 'del', only CN deletions will be considered.
 If 'origin', CN deletions and amplifications will be canceled out for each other, compared to 'abs' where the absolute CN deletions and CN amplifications will be added up.}
 
-\item{chrDf}{a data frame specify what genomic ranges should be considered for the instability score calculation.
-There columns should be specified: "chromsome", "start" and "end. If NULL (default), the whole chromosome will be used to calculated the instability score.}
+\item{chrDf}{a data frame specifying what genomic ranges should be considered for the instability score calculation.
+Three columns should be specified: "chromsome", "start" and "end. If NULL (default), the whole chromosome will be used to calculated the instability score.}
 }
 \value{
-a data frame with columns representing each samples in segDf, and rows representing instability scores specified by rows of the input chrDf
+a data frame with columns representing each samples in segDf, and rows representing instability scores specified by the input chrDf
 }
 \description{
 Calculate the chromosome instability from the segment-level SCNA data

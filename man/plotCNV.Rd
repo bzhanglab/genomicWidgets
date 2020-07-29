@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotCNV.R
 \name{plotCNV}
 \alias{plotCNV}
-\title{plot SCNA landscape as heatmap}
+\title{Plot SCNA landscape as heatmap}
 \usage{
 plotCNV(
   segDf,
@@ -14,9 +14,9 @@ plotCNV(
 )
 }
 \arguments{
-\item{segDf}{segment-level SCNA data frame. This is usually the same input as GISTIC2. Make sure there are these columns "sample", "chromosome", "start", "end", "log2".}
+\item{segDf}{segment-level SCNA data frame. This is usually the same input as GISTIC2. Make sure that there are these columns "sample", "chromosome", "start", "end", "log2".}
 
-\item{genomeVersion}{specify the genome version of SCNA data were generated, should be either 'hg19' or 'hg38'.
+\item{genomeVersion}{specify the genome version by which SCNA data were generated, should be either 'hg19' or 'hg38'.
 If genomeVersion is NULL, the no gap will be filled. Default is NULL.}
 
 \item{samples}{a optional character vector to specify the samples for the plot.
@@ -35,7 +35,7 @@ If NULL, the position will be the end of the chromosome(s). Default is NULL.}
 a ggplot2 plot object
 }
 \description{
-plotCNV is used to plot the segment-level SCNA data into heatmap
+plotCNV is used to plot the segment-level SCNA data into heatmap.
 }
 \examples{
 hnsccSegfile <- system.file("extdata", "CPTAC3_HNSCC_SCNA_segment_level.tsv", package = "genomicWidgets")

@@ -1,13 +1,13 @@
-#' convert the EPIC methylation array probe-level DNA methylation to gene-level 
+#' Convert the EPIC methylation array probe-level DNA methylation to gene-level 
 #'
 #' This function extracts the methylation probes located in the promoter region and CpG islands for each gene and use their methylation levels to summerize the 
-#' gene-level methylation by mean or median
-#' @param probeMat the probe-level DNA methylation matrix (probe by sample), entries are beta values
-#' @param nThread the number of threads to be used for the calcluation. If NULL, the number will be equal to the (# of CPU threads)-1. Default is NULL
+#' gene-level methylation by mean or median.
+#' @param probeMat the probe-level DNA methylation matrix (probe by sample), entries are beta values.
+#' @param nThread the number of threads to be used for the calcluation. If NULL, the number will be equal to the (# of CPU threads)-1. Default is NULL.
 #' @param use specify how the multiple probe values be converted to the single gene-level value. Need to be either 'mean' or 'median'.
-#' @param ... addtional parameter to for makeCluster. If you used a Linux or MacOS, it is proper to add type='FORK'
+#' @param ... addtional parameter to for makeCluster. If you used a Linux or MacOS, it is proper to add type='FORK'.
 #'
-#' @return the gene-level DNA methylation matrix (gene by sample), entries are beta values
+#' @return the gene-level DNA methylation matrix (gene by sample), entries are beta values.
 #' @export
 #'
 #' @examples hnsccSegfile <- system.file("extdata", "hnscc_GDC_methylation_part.tsv", package = "genomicWidgets")
