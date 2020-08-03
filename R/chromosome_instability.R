@@ -18,7 +18,6 @@
 #' weightAveChr(hnsccSegDf, genomeVersion = 'hg38') 
 #'  
 weightAveChr = function(segDf, genomeVersion='hg38', option = "abs", chrDf=NULL, nThread = NULL, ...){
-  if(is.null(nThread)) nThread = nThread = detectCores() - 1
   if(genomeVersion=='hg38') chrLength = hg38ChrLengthDf
   else if (genomeVersion=='hg19') chrLength = hg19ChrLengthDf
   else stop("Current only support genome version hg19 and hg38")
