@@ -20,8 +20,14 @@ If 'origin', CN deletions and amplifications will be canceled out for each other
 Three columns should be specified: "chromsome", "start" and "end. If NULL (default), the whole chromosome will be used to calculated the instability score.}
 }
 \value{
-a data frame with columns representing each samples in segDf, and rows representing instability scores specified by the input chrDf
+a data frame with columns representing each samples in segDf, and rows representing instability scores specified by   the input chrDf
 }
 \description{
 Calculate the chromosome instability from the segment-level SCNA data
+}
+\examples{
+hnsccSegfile <- system.file("extdata", "CPTAC3_HNSCC_SCNA_segment_level.tsv", package = "genomicWidgets")
+hnsccSegDf <- read.table(hnsccSegfile, header = TRUE)
+weightAveChr(hnsccSegDf, genomeVersion = 'hg38') 
+ 
 }

@@ -8,12 +8,13 @@
 #' If 'origin', CN deletions and amplifications will be canceled out for each other, compared to 'abs' where the absolute CN deletions and CN amplifications will be added up.
 #' @param chrDf a data frame specifying what genomic ranges should be considered for the instability score calculation.
 #' Three columns should be specified: "chromsome", "start" and "end. If NULL (default), the whole chromosome will be used to calculated the instability score.
-#' @return a data frame with columns representing each samples in segDf, and rows representing instability scores specified by the input chrDf  
+#' @return a data frame with columns representing each samples in segDf, and rows representing instability scores specified by   the input chrDf  
 #' @export
+#' @examples
 #' hnsccSegfile <- system.file("extdata", "CPTAC3_HNSCC_SCNA_segment_level.tsv", package = "genomicWidgets")
 #' hnsccSegDf <- read.table(hnsccSegfile, header = TRUE)
 #' weightAveChr(hnsccSegDf, genomeVersion = 'hg38') 
-#' @examples 
+#'  
 weightAveChr = function(segDf, genomeVersion='hg38', option = "abs", chrDf=NULL){
   if(genomeVersion=='hg38') chrLength = hg38ChrLengthDf
   else if (genomeVersion=='hg19') chrLength = hg19ChrLengthDf

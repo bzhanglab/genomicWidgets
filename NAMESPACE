@@ -2,3 +2,4 @@
 
 export(plotCNV)
 export(probe2gene)
+export(weightAveChr)
