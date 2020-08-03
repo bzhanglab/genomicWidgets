@@ -33,7 +33,7 @@ weightAveChr = function(segDf, genomeVersion='hg38', option = "abs", chrDf=NULL,
     chrDf=data.frame(chromosome=chrLength$chromosome, start=0, end=chrLength$length)
   segDfList = split(segDf, f = segDf$sample)
   changePerChr = list()
-  if(is.null(nThread)) myLapply = lappy
+  if(is.null(nThread)) myLapply = lapply
   else{
     cl = makeCluster(nThread, ...)
     clusterExport(cl, c("segDfList",".weightAveSeg","chrDf","option","GRanges"), envir = environment())
