@@ -37,7 +37,7 @@ weightAveChr = function(segDf, genomeVersion='hg38', option = "abs", chrDf=NULL,
   cl = makeCluster(nThread, ...)
   clusterExport(cl, c("segDfList",".weightAveSeg","chrDf","option"))
   for(idx in 1:nrow(chrDf)){
-    changePerChr[[chrDf$chromosome[idx]]] = parLapply(cl = cl, X = segDfList, function(x).weightAveSeg(segDf = x, 
+    changePerChr[[rownames(chrDf)[idx]]] = parLapply(cl = cl, X = segDfList, function(x).weightAveSeg(segDf = x, 
                                                                                       chr = chrDf$chromosome[idx], 
                                                                                       start = chrDf$start[idx], 
                                                                                       end = chrDf$end[idx],
