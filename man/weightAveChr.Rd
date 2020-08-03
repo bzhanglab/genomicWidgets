@@ -4,7 +4,14 @@
 \alias{weightAveChr}
 \title{Calculate the chromosome instability from the segment-level SCNA data}
 \usage{
-weightAveChr(segDf, genomeVersion = "hg38", option = "abs", chrDf = NULL)
+weightAveChr(
+  segDf,
+  genomeVersion = "hg38",
+  option = "abs",
+  chrDf = NULL,
+  nThread = NULL,
+  ...
+)
 }
 \arguments{
 \item{segDf}{segment-level SCNA data frame. This is usually the same input as GISTIC2. Make sure that there are these columns: "sample", "chromosome", "start", "end", "log2".}
@@ -17,7 +24,9 @@ If 'amp', only CN amplifications will be considered. If 'del', only CN deletions
 If 'origin', CN deletions and amplifications will be canceled out for each other, compared to 'abs' where the absolute CN deletions and CN amplifications will be added up.}
 
 \item{chrDf}{a data frame specifying what genomic ranges should be considered for the instability score calculation.
-Three columns should be specified: "chromsome", "start" and "end. If NULL (default), the whole chromosome will be used to calculated the instability score.}
+Three columns should be specified: "chromosome", "start" and "end. If NULL (default), the whole chromosome will be used to calculated the instability score.}
+
+\item{...}{additional parameter to for makeCluster. If you used a Linux or MacOS, it is proper to add type='FORK'.}
 }
 \value{
 a data frame with columns representing each samples in segDf, and rows representing instability scores specified by   the input chrDf
