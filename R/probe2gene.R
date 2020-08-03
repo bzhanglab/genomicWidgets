@@ -17,7 +17,7 @@ probe2gene = function(probeMat, nThread = NULL, use='median', ...){
   if(is.null(nThread))
     nThread = detectCores() - 1
   cl = makeCluster(nThread, ...)
-  clusterExport(cl, "probeMat")
+  clusterExport(cl, "probeMat", , envir = environment())
   if(use=='median')
     genelevel = parLapply(epicProbe2GeneMappingClean, function(x)apply(probeMat[x,],2,median,na.rm=T))
   else if(use=='mean')
