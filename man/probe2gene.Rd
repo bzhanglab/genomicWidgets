@@ -9,7 +9,7 @@ probe2gene(probeMat, nThread = NULL, use = "median", ...)
 \arguments{
 \item{probeMat}{the probe-level DNA methylation matrix (probe by sample), entries are beta values.}
 
-\item{nThread}{the number of threads to be used for the calcluation. If NULL, the number will be equal to the (# of CPU threads)-1. Default is NULL.}
+\item{nThread}{the number of threads to be used for the calculation. If NULL, no parallel computation will be performed.}
 
 \item{use}{specify how the multiple probe values be converted to the single gene-level value. Need to be either 'mean' or 'median'.}
 
@@ -25,5 +25,6 @@ gene-level methylation by mean or median.
 \examples{
 hnsccSegfile <- system.file("extdata", "hnscc_GDC_methylation_part.tsv", package = "genomicWidgets")
 hnsccMethy <- read.table(file = hnsccSegfile, sep = '\t', row.names = 1, header = TRUE)
-probe2gene(probeMat=hnsccMethy)
+probe2gene(probeMat=hnsccMethy) #no parallel computation
+probe2gene(probeMat=hnsccMethy, nThread = 4) #parallel computation using 4 cores
 }
