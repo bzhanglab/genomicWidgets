@@ -47,7 +47,7 @@ weightAveChr = function(segDf, genomeVersion='hg38', option = "abs", chrDf=NULL,
                                                                                       chrLength = chrLength,
                                                                                       option = option))
   }
-  if(!is.null(nThread)) stop(cl)
+  if(!is.null(nThread)) stopCluster(cl)
   changePerChr = lapply(changePerChr, unlist)
   changePerChr = do.call(rbind, changePerChr)
   return(changePerChr)
