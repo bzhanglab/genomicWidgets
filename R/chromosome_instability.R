@@ -36,7 +36,7 @@ weightAveChr = function(segDf, genomeVersion='hg38', option = "abs", chrDf=NULL,
   if(is.null(nThread)) myLapply = lapply
   else{
     cl = makeCluster(nThread, ...)
-    clusterExport(cl, c("segDfList",".weightAveSeg","chrDf","option","GRanges", "IRanges", 'Rle', 'strand'), envir = environment())
+    clusterExport(cl, c("segDfList",".weightAveSeg","chrDf","option","GRanges", "IRanges", 'Rle', 'strand', 'seqnames'), envir = environment())
     myLapply = function(X, fun)parLapply(cl = cl, X=X, fun=fun)
   }
   for(idx in 1:nrow(chrDf)){
