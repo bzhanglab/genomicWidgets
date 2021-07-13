@@ -40,7 +40,7 @@ weightAveChr = function(segDf, genomeVersion='hg38', option = "abs", chrDf=NULL,
     myLapply = function(X, fun)parLapply(cl = cl, X=X, fun=fun)
   }
   for(idx in 1:nrow(chrDf)){
-    changePerChr[[rownames(chrDf)[idx]]] = myLapply(segDfList, function(x).weightAveSeg(segDf = x, 
+    changePerChr[[chrDf$chromosome[idx]]] = myLapply(segDfList, function(x).weightAveSeg(segDf = x, 
                                                                                       chr = chrDf$chromosome[idx], 
                                                                                       start = chrDf$start[idx], 
                                                                                       end = chrDf$end[idx],
