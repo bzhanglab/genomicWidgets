@@ -114,6 +114,7 @@ plotCNV = function(segDf,
   }
   segObj = sort(segObj)
   segObj = as.data.frame(segObj)
+  segObj$sample = segDf$sample
   colnames(segObj)[1] = "chromosome"
   segObj
 }
