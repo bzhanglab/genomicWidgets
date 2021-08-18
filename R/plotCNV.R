@@ -40,6 +40,8 @@ plotCNV = function(segDf,
   segDf$chromosome[segDf$chromosome == "23"] = "X"
   segDf$chromosome[segDf$chromosome == "24"] = "Y"
   
+  segDf = segDf[segDf$chromosome %in% c(1:22, 'X', 'Y'), ]
+  
   #subset the samples as required, also specify the sample order
   if(!is.null(samples)){
     if(!all(samples %in% segDf$sample))
