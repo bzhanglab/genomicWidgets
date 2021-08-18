@@ -77,7 +77,8 @@ plotCNV = function(segDf,
   segDf$log2 = ifelse(segDf$log2 < -1, -1, segDf$log2)
   plotCNV = ggplot(segDf, aes(1, width, fill=log2)) + 
     geom_bar(stat="identity")+
-    scale_fill_gradient2(high = 'red', low = 'blue')+
+    scale_fill_gradientn(values=c(-1, 0, 1), 
+                         colours=c("blue", "white", "red"))+
     geom_hline(yintercept = 0, size = 1)+
     scale_y_continuous(expand = c(0,0))+
     facet_grid(sample ~ chromosome, space = "free",scales = "free") +
