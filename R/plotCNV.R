@@ -70,6 +70,7 @@ plotCNV = function(segDf,
   if(!is.null(samples))
     segDf$sample=factor(segDf$sample, levels = samples)
   
+  segDf$chromosome = factor(segDf$chromosome, levels = c(1:22, 'X', 'Y'))
   segDf$name = paste(segDf$sample, segDf$chromosome, segDf$start, sep = '-')
   segDf$width = segDf$end - segDf$start
   segDf$log2 = ifelse(segDf$log2 > 1, 1, segDf$log2)
